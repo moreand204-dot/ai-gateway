@@ -1,0 +1,15 @@
+{
+  "name": "ai-gateway",
+  "version": "1.0.0",
+  "description": "بوابة AI موحدة لكل بوتاتك - بتدير مفاتيح Groq/Gemini وتلف عليهم تلقائي",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "axios": "^1.7.3",
+    "dotenv": "^16.4.5"
+  }
+}
