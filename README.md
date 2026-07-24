@@ -54,3 +54,23 @@ async function askAI(prompt, system) {
 
 عدّل `GROQ_KEYS` أو `GEMINI_KEYS` في `.env` على السيرفر وعمل ريستارت للبوابة.
 مفيش أي تعديل مطلوب في كود البوتات نفسها.
+
+## الرفع على Vercel
+
+الملفات دلوقتي جاهزة للرفع على Vercel (فيها `api/index.js` و`vercel.json`).
+
+1. ارفع محتويات مجلد `ai-gateway` على مستودع GitHub (بدون ملف `.env` — تأكد إن `.gitignore` بيستثنيه)
+2. ادخل vercel.com وسجل دخول (بحساب GitHub)
+3. New Project → اختار المستودع اللي رفعته
+4. قبل ما تضغط Deploy، افتح **Environment Variables** وضيف نفس المتغيرات اللي في `.env.example`:
+   - `GATEWAY_SECRET`
+   - `GROQ_KEYS`
+   - `GEMINI_KEYS`
+   - `OPENAI_KEYS`
+   - `OPENAI_MODEL`
+   - `GROQ_MODEL`
+5. دوس **Deploy**
+
+بعد ما يخلص، Vercel هيديك رابط زي `https://اسم-المشروع.vercel.app` — ده اللي تحطه في `GATEWAY_URL` جوه `ai_mode.js` (والمسار بيبقى `https://اسم-المشروع.vercel.app/v1/ai`).
+
+**لو غيّرت أي مفتاح بعد كده:** روح Project Settings → Environment Variables → عدّل القيمة، وبعدين لازم تعمل **Redeploy** (من تبويب Deployments → أحدث نسخة → زر الثلاث نقط → Redeploy) عشان التغيير يتفعّل.

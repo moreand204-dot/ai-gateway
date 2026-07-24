@@ -166,7 +166,11 @@ app.get('/health', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`✅ AI Gateway شغال على البورت ${PORT}`);
-    console.log(`   Groq keys: ${GROQ_KEYS.length} | Gemini keys: ${GEMINI_KEYS.length} | OpenAI keys: ${OPENAI_KEYS.length}`);
-});
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`✅ AI Gateway شغال على البورت ${PORT}`);
+        console.log(`   Groq keys: ${GROQ_KEYS.length} | Gemini keys: ${GEMINI_KEYS.length} | OpenAI keys: ${OPENAI_KEYS.length}`);
+    });
+}
+
+export default app;
